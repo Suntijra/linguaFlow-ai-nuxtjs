@@ -93,7 +93,10 @@ definePageMeta({
   layout: false
 })
 const router = useRouter()
+const { login } = useAuth()
+
 const handleLogin = () => {
+  login()
   router.push('/dashboard')
 }
 </script>
