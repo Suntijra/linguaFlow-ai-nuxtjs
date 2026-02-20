@@ -9,45 +9,45 @@
       <!-- Dashboard (requires login) -->
       <NuxtLink v-if="isLoggedIn" to="/dashboard" class="flex items-center gap-3 px-3 py-2.5 rounded-md hover:bg-gray-50 text-foreground transition-all duration-200 font-medium" active-class="bg-primary/5 text-primary">
         <LayoutDashboard class="w-5 h-5 opacity-70" />
-        Dashboard
+        {{ t('sidebar.dashboard') }}
       </NuxtLink>
-      <span v-else class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 cursor-not-allowed select-none font-medium" title="Please login to access">
+      <span v-else class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 cursor-not-allowed select-none font-medium" :title="t('sidebar.loginRequired')">
         <LayoutDashboard class="w-5 h-5 opacity-70" />
-        Dashboard
+        {{ t('sidebar.dashboard') }}
         <Lock class="w-3.5 h-3.5 ml-auto" />
       </span>
 
       <!-- Translate Docx (accessible to all) -->
       <NuxtLink to="/dashboard/translate-docx" class="flex items-center gap-3 px-3 py-2.5 rounded-md hover:bg-gray-50 text-foreground transition-all duration-200 font-medium" active-class="bg-primary/5 text-primary">
         <FileText class="w-5 h-5 opacity-70" />
-        Translate Docx
+        {{ t('sidebar.translateDocx') }}
       </NuxtLink>
 
       <!-- Translate Voice (accessible to all) -->
       <NuxtLink to="/dashboard/translate-voice" class="flex items-center gap-3 px-3 py-2.5 rounded-md hover:bg-gray-50 text-foreground transition-all duration-200 font-medium" active-class="bg-primary/5 text-primary">
         <Mic class="w-5 h-5 opacity-70" />
-        Translate Voice
+        {{ t('sidebar.translateVoice') }}
       </NuxtLink>
 
       <!-- API Sandbox (requires login) -->
       <NuxtLink v-if="isLoggedIn" to="/dashboard/api-sandbox" class="flex items-center gap-3 px-3 py-2.5 rounded-md hover:bg-gray-50 text-foreground transition-all duration-200 font-medium" active-class="bg-primary/5 text-primary">
         <Code class="w-5 h-5 opacity-70" />
-        API &amp; Sandbox
+        {{ t('sidebar.apiSandbox') }}
       </NuxtLink>
-      <span v-else class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 cursor-not-allowed select-none font-medium" title="Please login to access">
+      <span v-else class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 cursor-not-allowed select-none font-medium" :title="t('sidebar.loginRequired')">
         <Code class="w-5 h-5 opacity-70" />
-        API &amp; Sandbox
+        {{ t('sidebar.apiSandbox') }}
         <Lock class="w-3.5 h-3.5 ml-auto" />
       </span>
 
       <!-- Top-up Credits (requires login) -->
       <NuxtLink v-if="isLoggedIn" to="/dashboard/top-up" class="flex items-center gap-3 px-3 py-2.5 rounded-md hover:bg-gray-50 text-foreground transition-all duration-200 font-medium" active-class="bg-primary/5 text-primary">
         <CreditCard class="w-5 h-5 opacity-70" />
-        Top-up Credits
+        {{ t('sidebar.topUp') }}
       </NuxtLink>
-      <span v-else class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 cursor-not-allowed select-none font-medium" title="Please login to access">
+      <span v-else class="flex items-center gap-3 px-3 py-2.5 rounded-md text-gray-300 cursor-not-allowed select-none font-medium" :title="t('sidebar.loginRequired')">
         <CreditCard class="w-5 h-5 opacity-70" />
-        Top-up Credits
+        {{ t('sidebar.topUp') }}
         <Lock class="w-3.5 h-3.5 ml-auto" />
       </span>
     </nav>
@@ -56,11 +56,11 @@
     <div class="mt-auto border-t border-border pt-4">
       <button v-if="isLoggedIn" @click="logout" class="flex items-center gap-3 px-3 py-2.5 w-full text-left rounded-md hover:bg-red-50 text-red-400 hover:text-red-600 transition-all duration-200 font-medium text-sm">
         <LogOut class="w-4 h-4" />
-        Logout
+        {{ t('sidebar.logout') }}
       </button>
       <NuxtLink v-else to="/login" class="flex items-center justify-center gap-2 w-full py-2.5 bg-primary text-white rounded-md font-bold text-sm hover:bg-primary/90 transition-all shadow-sm">
         <Lock class="w-4 h-4" />
-        Login to Unlock All
+        {{ t('sidebar.loginUnlock') }}
       </NuxtLink>
     </div>
   </aside>
@@ -70,4 +70,5 @@
 import { LayoutDashboard, FileText, Mic, Code, CreditCard, Lock, LogOut } from 'lucide-vue-next'
 
 const { isLoggedIn, logout } = useAuth()
+const { t } = useLocale()
 </script>

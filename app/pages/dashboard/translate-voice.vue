@@ -4,17 +4,17 @@
     <div class="px-4 lg:px-10 pb-10 mt-4">
       <div class="mb-10 text-center">
         <h2 class="text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 text-foreground">
-            Voice &amp; File Translation
+            {{ t('voice.title') }}
         </h2>
         <p class="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Upload your recordings for high-fidelity AI translation.
+            {{ t('voice.subtitle') }}
         </p>
       </div>
 
       <!-- Configuration Dropdowns -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12 sm:mb-16">
         <div class="flex flex-col gap-2 w-full sm:w-64">
-          <label class="text-[10px] uppercase tracking-widest text-muted-foreground font-bold ml-4">Speak In</label>
+          <label class="text-[10px] uppercase tracking-widest text-muted-foreground font-bold ml-4">{{ t('docx.sourceLabel') }}</label>
           <div class="relative group">
             <select class="w-full bg-white border border-gray-200 group-hover:border-primary/50 text-foreground rounded-xl px-5 py-4 appearance-none focus:ring-2 focus:ring-primary focus:outline-none transition-all shadow-sm font-medium">
               <option>English (US)</option>
@@ -30,7 +30,7 @@
         </div>
         
         <div class="flex flex-col gap-2 w-full sm:w-64">
-          <label class="text-[10px] uppercase tracking-widest text-muted-foreground font-bold ml-4">Translate To</label>
+          <label class="text-[10px] uppercase tracking-widest text-muted-foreground font-bold ml-4">{{ t('docx.targetLabel') }}</label>
           <div class="relative group">
             <select class="w-full bg-white border border-gray-200 group-hover:border-primary/50 text-foreground rounded-xl px-5 py-4 appearance-none focus:ring-2 focus:ring-primary focus:outline-none transition-all shadow-sm font-medium">
               <option>Thai (TH)</option>
@@ -55,11 +55,10 @@
             <UploadCloud class="w-10 h-10" />
           </div>
           <h3 class="text-xl font-bold text-foreground mb-2">
-            {{ selectedFile ? selectedFile.name : 'Upload Audio File' }}
+            {{ selectedFile ? selectedFile.name : t('voice.uploadTitle') }}
           </h3>
           <p class="text-sm text-muted-foreground max-w-sm mx-auto mb-6">
-            Drag and drop or click to browse recordings.<br>
-            Supported formats: mp3, wav, m4a. Max 50MB.
+            {{ t('voice.uploadDesc') }}
           </p>
           <div class="flex gap-2 justify-center mb-8">
             <span class="px-3 py-1 bg-white border border-gray-200 text-gray-500 text-[10px] font-bold rounded-full uppercase tracking-wider">mp3</span>
@@ -67,9 +66,9 @@
             <span class="px-3 py-1 bg-white border border-gray-200 text-gray-500 text-[10px] font-bold rounded-full uppercase tracking-wider">m4a</span>
           </div>
           <button @click.stop="startFlow" class="bg-primary text-white px-8 py-3 rounded-full font-medium shadow-sm hover:bg-primary/90 transition-colors flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed" :disabled="!selectedFile">
-            Browse & Translate
+            {{ t('voice.browseBtn') }}
           </button>
-          <p v-if="showFileError" class="mt-3 text-sm text-red-500">Please upload an audio file first.</p>
+          <p v-if="showFileError" class="mt-3 text-sm text-red-500">{{ t('voice.fileError') }}</p>
         </div>
       </div>
 
@@ -79,11 +78,11 @@
         <div class="bg-white rounded-2xl p-6 sm:p-8 flex flex-col relative overflow-hidden group shadow-sm border border-gray-200">
           <div class="flex items-center gap-2 mb-6">
             <span class="w-2 h-2 rounded-full" :class="isTranscribing ? 'bg-teal-500 animate-pulse' : 'bg-gray-300'"></span>
-            <h3 class="text-xs font-bold uppercase tracking-widest text-gray-500">Live Transcription</h3>
+            <h3 class="text-xs font-bold uppercase tracking-widest text-gray-500">{{ t('voice.liveTranscription') }}</h3>
           </div>
           <div class="text-xl lg:text-2xl font-light text-gray-800 leading-relaxed overflow-y-auto pr-4 flex-1">
             <span v-if="liveTranscript">{{ liveTranscript }}</span>
-            <span v-else class="text-gray-300">Transcription will appear here after payment...</span>
+            <span v-else class="text-gray-300">{{ t('voice.transcriptionPlaceholder') }}</span>
             <span v-if="isTranscribing" class="inline-block w-[2px] h-6 bg-primary ml-1 animate-pulse align-middle"></span>
           </div>
           <div v-if="liveTranscript" class="mt-4 flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -97,11 +96,11 @@
         <div class="bg-primary/5 rounded-2xl p-6 sm:p-8 border border-primary/20 flex flex-col relative overflow-hidden group shadow-sm">
           <div class="flex items-center gap-2 mb-6">
             <span class="w-2 h-2 rounded-full" :class="isTranscribing ? 'bg-primary animate-pulse' : 'bg-gray-300'"></span>
-            <h3 class="text-xs font-bold uppercase tracking-widest text-primary">Translation Output</h3>
+            <h3 class="text-xs font-bold uppercase tracking-widest text-primary">{{ t('voice.translationOutput') }}</h3>
           </div>
           <div class="text-xl lg:text-2xl font-light text-gray-900 leading-relaxed overflow-y-auto pr-4 flex-1 font-serif">
             <span v-if="liveTranslation">{{ liveTranslation }}</span>
-            <span v-else class="text-gray-300">Translation will appear here...</span>
+            <span v-else class="text-gray-300">{{ t('voice.translationPlaceholder') }}</span>
           </div>
           <div v-if="liveTranslation" class="mt-4 flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
             <button class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-gray-500 border border-gray-200 hover:text-primary hover:border-primary transition-all shadow-sm">
@@ -117,7 +116,7 @@
       <!-- Recent Audio Files -->
       <div class="bg-white rounded-xl shadow-sm border border-border overflow-hidden mt-8">
         <div class="p-6 border-b border-border">
-          <h3 class="text-lg font-bold text-foreground">Recent Audio Files</h3>
+          <h3 class="text-lg font-bold text-foreground">{{ t('voice.recentTitle') }}</h3>
         </div>
         <div class="p-6">
           <div class="space-y-4">
@@ -130,15 +129,15 @@
                 <div class="flex-1">
                   <div class="flex justify-between items-center mb-1">
                     <h4 class="font-medium text-foreground">{{ selectedFile?.name ?? 'audio_recording.mp3' }}</h4>
-                    <span v-if="newDocState === 'loading'" class="text-xs font-medium text-primary">Transcribing... {{ docProgress }}%</span>
-                    <span v-if="newDocState === 'done'" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Completed</span>
+                    <span v-if="newDocState === 'loading'" class="text-xs font-medium text-primary">{{ t('voice.transcribing') }} {{ docProgress }}%</span>
+                    <span v-if="newDocState === 'done'" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">{{ t('voice.completed') }}</span>
                   </div>
                   <div v-if="newDocState === 'loading'" class="w-full bg-gray-200 rounded-full h-1.5">
                     <div class="bg-primary h-1.5 rounded-full transition-all duration-300" :style="{ width: docProgress + '%' }"></div>
                   </div>
                   <div v-if="newDocState === 'done'" class="flex items-center gap-3 mt-1">
                     <button class="text-primary hover:text-primary/80 font-medium text-sm flex items-center gap-1">
-                      <Download class="w-4 h-4" /> Download
+                      <Download class="w-4 h-4" /> {{ t('voice.download') }}
                     </button>
                   </div>
                 </div>
@@ -157,9 +156,9 @@
                 </div>
               </div>
               <div class="flex items-center gap-4">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Completed</span>
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">{{ t('voice.completed') }}</span>
                 <button class="text-primary hover:text-primary/80 font-medium text-sm flex items-center gap-1">
-                  <Download class="w-4 h-4" /> Download
+                  <Download class="w-4 h-4" /> {{ t('voice.download') }}
                 </button>
               </div>
             </div>
@@ -173,7 +172,7 @@
                 <div class="flex-1">
                   <div class="flex justify-between items-center mb-1">
                     <h4 class="font-medium text-foreground">Conference_Call_Feb.wav</h4>
-                    <span class="text-xs font-medium text-primary">Transcribing... 62%</span>
+                    <span class="text-xs font-medium text-primary">{{ t('voice.transcribing') }} 62%</span>
                   </div>
                   <div class="w-full bg-gray-200 rounded-full h-1.5">
                     <div class="bg-primary h-1.5 rounded-full" style="width: 62%"></div>
@@ -195,8 +194,8 @@
             <!-- Step: Loading -->
             <div v-if="overlayStep === 'loading'" class="flex flex-col items-center">
               <div class="w-16 h-16 border-4 border-primary/20 border-t-primary rounded-full animate-spin mb-6"></div>
-              <h3 class="text-xl font-bold text-foreground mb-2">Uploading Audio...</h3>
-              <p class="text-muted-foreground text-sm">Analyzing your recording and preparing transcription.</p>
+              <h3 class="text-xl font-bold text-foreground mb-2">{{ t('voice.uploadingAudio') }}</h3>
+              <p class="text-muted-foreground text-sm">{{ t('voice.uploadingDesc') }}</p>
             </div>
 
             <!-- Step: Payment (LOGGED IN = Credits) -->
@@ -204,16 +203,16 @@
               <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
                 <span class="material-symbols-outlined text-primary text-3xl">toll</span>
               </div>
-              <h3 class="text-xl font-bold text-foreground mb-2">Confirm Payment</h3>
-              <p class="text-muted-foreground text-sm mb-6">Your balance: <strong class="text-primary">{{ user.credits }} Credits</strong></p>
+              <h3 class="text-xl font-bold text-foreground mb-2">{{ t('voice.confirmPay') }}</h3>
+              <p class="text-muted-foreground text-sm mb-6">{{ t('voice.yourBalance') }} <strong class="text-primary">{{ user.credits }} {{ t('voice.credits') }}</strong></p>
               <div class="w-full bg-gray-50 rounded-xl p-4 border border-gray-100 text-left mb-6">
                 <p class="text-sm font-medium text-foreground">{{ selectedFile?.name ?? 'audio_recording.mp3' }}</p>
-                <p class="text-xs text-muted-foreground mt-1">30 Credits &bull; ASR + AI Translation</p>
+                <p class="text-xs text-muted-foreground mt-1">{{ t('voice.payCredits') }}</p>
               </div>
               <button @click="confirmPayment" class="w-full py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
-                Confirm &amp; Pay 30 Credits
+                {{ t('voice.confirmBtn') }}
               </button>
-              <button @click="cancelFlow" class="mt-3 text-sm text-muted-foreground hover:text-foreground transition-colors">Cancel</button>
+              <button @click="cancelFlow" class="mt-3 text-sm text-muted-foreground hover:text-foreground transition-colors">{{ t('voice.cancel') }}</button>
             </div>
 
             <!-- Step: Payment (GUEST = QR / Card) -->
@@ -221,7 +220,7 @@
               <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mb-5">
                 <span class="material-symbols-outlined text-slate-600 text-3xl">payment</span>
               </div>
-              <h3 class="text-xl font-bold text-foreground mb-1">Choose Payment Method</h3>
+              <h3 class="text-xl font-bold text-foreground mb-1">{{ t('voice.chooseMethod') }}</h3>
               <p class="text-muted-foreground text-sm mb-6">{{ selectedFile?.name ?? 'audio_recording.mp3' }} &mdash; <strong>฿ 80 THB</strong></p>
 
               <!-- Method Selector -->
@@ -238,8 +237,8 @@
                 </button>
                 <NuxtLink to="/login" @click="cancelFlow" class="flex flex-col items-center gap-2 p-4 border-2 border-primary/30 bg-primary/5 rounded-xl hover:border-primary hover:bg-primary/10 transition-all">
                   <span class="material-symbols-outlined text-3xl text-primary">toll</span>
-                  <span class="text-xs font-bold text-primary">Login</span>
-                  <span class="text-[10px] text-primary/70">Use Credits</span>
+                  <span class="text-xs font-bold text-primary">{{ t('landing.login') }}</span>
+                  <span class="text-[10px] text-primary/70">{{ t('voice.loginUseCredits') }}</span>
                 </NuxtLink>
               </div>
 
@@ -251,9 +250,9 @@
                     <span class="absolute bottom-2 text-[10px] font-bold text-muted-foreground tracking-widest">PROMPTPAY</span>
                   </div>
                 </div>
-                <p class="text-sm text-muted-foreground mb-4">Scan with any banking app to pay <strong>฿80.00</strong></p>
-                <button @click="confirmPayment" class="w-full py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">I've Paid</button>
-                <button @click="guestPayMethod = null" class="mt-3 text-sm text-muted-foreground hover:text-foreground transition-colors">← Back</button>
+                <p class="text-sm text-muted-foreground mb-4">{{ t('voice.scanPay') }} <strong>฿80.00</strong></p>
+                <button @click="confirmPayment" class="w-full py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">{{ t('voice.ivePaid') }}</button>
+                <button @click="guestPayMethod = null" class="mt-3 text-sm text-muted-foreground hover:text-foreground transition-colors">{{ t('voice.back') }}</button>
               </div>
 
               <!-- Credit Card View -->
@@ -263,11 +262,11 @@
                   <input type="text" placeholder="MM / YY" class="px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
                   <input type="text" placeholder="CVV" class="px-4 py-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
                 </div>
-                <button @click="confirmPayment" class="w-full py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 mt-1">Pay ฿80.00</button>
-                <button @click="guestPayMethod = null" class="text-sm text-muted-foreground hover:text-foreground transition-colors">← Back</button>
+                <button @click="confirmPayment" class="w-full py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 mt-1">{{ t('voice.payBtn') }} ฿80.00</button>
+                <button @click="guestPayMethod = null" class="text-sm text-muted-foreground hover:text-foreground transition-colors">{{ t('voice.back') }}</button>
               </div>
 
-              <button @click="cancelFlow" class="mt-3 text-sm text-muted-foreground hover:text-foreground transition-colors">Cancel</button>
+              <button @click="cancelFlow" class="mt-3 text-sm text-muted-foreground hover:text-foreground transition-colors">{{ t('voice.cancel') }}</button>
             </div>
 
             <!-- Step: Success -->
@@ -275,9 +274,9 @@
               <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
                 <span class="material-symbols-outlined text-green-600 text-3xl">check_circle</span>
               </div>
-              <h3 class="text-xl font-bold text-foreground mb-2">Payment Successful!</h3>
-              <p class="text-muted-foreground text-sm mb-6">Your audio transcription is starting now.</p>
-              <button @click="closeSuccessAndStartProgress" class="w-full py-3 bg-green-500 text-white font-bold rounded-xl hover:bg-green-600 transition-all shadow-lg shadow-green-500/20">Close</button>
+              <h3 class="text-xl font-bold text-foreground mb-2">{{ t('voice.paySuccess') }}</h3>
+              <p class="text-muted-foreground text-sm mb-6">{{ t('voice.paySuccessDesc') }}</p>
+              <button @click="closeSuccessAndStartProgress" class="w-full py-3 bg-green-500 text-white font-bold rounded-xl hover:bg-green-600 transition-all shadow-lg shadow-green-500/20">{{ t('voice.close') }}</button>
             </div>
 
           </div>
@@ -296,6 +295,7 @@ definePageMeta({
 })
 
 const { isLoggedIn, user, logout } = useAuth()
+const { t } = useLocale()
 
 const fileInput = ref(null)
 const selectedFile = ref(null)

@@ -4,8 +4,10 @@
       <slot name="left"></slot>
     </div>
     <div class="flex items-center gap-4">
-      <button class="px-3 py-1.5 rounded-md border border-border text-sm font-medium hover:bg-gray-50 text-foreground transition-colors">
-        TH / EN
+      <button @click="toggleLocale" class="px-3 py-1.5 rounded-md border border-border text-sm font-medium hover:bg-gray-50 text-foreground transition-colors flex items-center gap-1.5">
+        <span :class="locale === 'th' ? 'text-primary font-bold' : 'text-muted-foreground'">TH</span>
+        <span class="text-gray-300">/</span>
+        <span :class="locale === 'en' ? 'text-primary font-bold' : 'text-muted-foreground'">EN</span>
       </button>
       <button class="p-2 rounded-full hover:bg-gray-100 text-muted-foreground transition-colors relative">
         <Bell class="w-5 h-5" />
@@ -22,4 +24,6 @@
 
 <script setup>
 import { Bell } from 'lucide-vue-next'
+
+const { locale, toggleLocale } = useLocale()
 </script>
