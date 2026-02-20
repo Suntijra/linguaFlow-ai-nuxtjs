@@ -15,8 +15,8 @@
 
     <div class="sm:mx-auto sm:w-full sm:max-w-md relative z-10 text-center">
       <NuxtLink to="/" class="inline-flex items-center gap-2 font-bold text-3xl text-primary justify-center mb-2">
-        <div class="h-10 w-10 rounded-lg bg-primary text-white flex items-center justify-center shadow-md">L</div>
-        LinguaFlow
+        <div class="h-10 w-10 rounded-lg bg-primary text-white flex items-center justify-center shadow-md">D</div>
+        dangjai
       </NuxtLink>
       <h2 class="mt-4 text-center text-3xl font-extrabold text-gray-900 tracking-tight">
         {{ t('login.welcome') }}

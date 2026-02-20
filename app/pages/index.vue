@@ -6,7 +6,7 @@
           <div class="bg-primary p-2 rounded-xl flex items-center justify-center">
             <span class="material-symbols-outlined text-white text-xl">translate</span>
           </div>
-          <span class="text-xl font-bold tracking-tight text-secondary">LinguaFlow AI</span>
+          <span class="text-xl font-bold tracking-tight text-secondary">dangjai AI</span>
         </div>
         <div class="hidden md:flex items-center gap-8 text-sm font-semibold">
           <a class="text-slate-600 hover:text-primary transition-colors" href="#features">{{ t('landing.navFeatures') }}</a>
@@ -222,7 +222,7 @@
               <div class="bg-primary p-2 rounded-xl flex items-center justify-center">
                 <span class="material-symbols-outlined text-white text-xl">translate</span>
               </div>
-              <span class="text-xl font-bold tracking-tight text-secondary">LinguaFlow AI</span>
+              <span class="text-xl font-bold tracking-tight text-secondary">dangjai AI</span>
             </div>
             <p class="text-slate-500 max-w-sm leading-relaxed">{{ t('landing.footerDesc') }}</p>
           </div>

@@ -3,7 +3,7 @@
     <div class="text-center mb-12">
       <h1 class="text-4xl font-extrabold text-foreground tracking-tight mb-4">Top Up Credits</h1>
       <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
-        Choose a package that fits your translation needs. Credits never expire and can be used across all LinguaFlow services.
+        Choose a package that fits your translation needs. Credits never expire and can be used across all dangjai services.
       </p>
     </div>
 

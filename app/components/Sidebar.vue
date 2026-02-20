@@ -1,8 +1,8 @@
 <template>
   <aside class="w-64 bg-white border-r border-border flex flex-col p-4 shadow-sm h-screen sticky top-0">
     <div class="flex items-center gap-2 font-bold text-xl text-primary mb-10 mt-2 px-2">
-      <div class="h-8 w-8 rounded bg-primary text-white flex items-center justify-center shadow-sm">L</div>
-      LinguaFlow
+      <div class="h-8 w-8 rounded bg-primary text-white flex items-center justify-center shadow-sm">D</div>
+      dangjai
     </div>
     
     <nav class="flex-1 space-y-1">

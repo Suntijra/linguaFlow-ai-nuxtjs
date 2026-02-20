@@ -75,11 +75,11 @@ export const translations: Record<string, any> = {
       footerSecurity: 'Security & Privacy',
       footerDevDocs: 'Developer Docs',
       footerCompany: 'Company',
-      footerAbout: 'About LinguaFlow',
+      footerAbout: 'About dangjai',
       footerPrivacy: 'Privacy Center',
       footerTerms: 'Enterprise Terms',
       footerSupport: 'Expert Support',
-      footerCopy: '© 2024 LinguaFlow AI Technologies Inc. All rights reserved.',
+      footerCopy: '© 2024 dangjai AI Technologies Inc. All rights reserved.',
     },
     // Login
     login: {
@@ -253,11 +253,11 @@ export const translations: Record<string, any> = {
       footerSecurity: 'ความปลอดภัย',
       footerDevDocs: 'เอกสาร Developer',
       footerCompany: 'บริษัท',
-      footerAbout: 'เกี่ยวกับ LinguaFlow',
+      footerAbout: 'เกี่ยวกับ dangjai',
       footerPrivacy: 'นโยบายความเป็นส่วนตัว',
       footerTerms: 'ข้อตกลงใช้งาน',
       footerSupport: 'ฝ่ายสนับสนุน',
-      footerCopy: '© 2024 LinguaFlow AI Technologies Inc. สงวนลิขสิทธิ์',
+      footerCopy: '© 2024 dangjai AI Technologies Inc. สงวนลิขสิทธิ์',
     },
     // Login
     login: {

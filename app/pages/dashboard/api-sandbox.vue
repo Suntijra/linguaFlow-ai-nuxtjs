@@ -58,7 +58,7 @@
       <div class="p-6 border-b border-border flex justify-between items-center">
         <div>
           <h3 class="text-lg font-bold text-foreground">Interactive Sandbox</h3>
-          <p class="text-sm text-muted-foreground mt-1">Test the LinguaFlow API directly from your browser.</p>
+          <p class="text-sm text-muted-foreground mt-1">Test the dangjai API directly from your browser.</p>
         </div>
         <div class="flex items-center gap-2 bg-gray-100 p-1 rounded-lg">
           <button class="px-3 py-1 text-sm font-medium rounded-md bg-white shadow-sm text-foreground">cURL</button>
